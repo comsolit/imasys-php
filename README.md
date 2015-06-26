@@ -1,6 +1,6 @@
 # IMASYS PHP
 
-IMASYS PHP is a PHP wrapper for the IMASYS XML API. Current capabilities are sending SMS messages and checking the message status.
+IMASYS PHP is a PHP wrapper for the IMASYS XML API from Swissphone. Current capabilities are sending SMS messages and checking the message status.
 
 ## Example: Send a text message and get message status
 ### 1. Enter credentials
@@ -33,3 +33,8 @@ foreach ($batchStatusResponse->getBatch()->getMessages() as $message) {
     print_r($message->getStatus());
 }
 ```
+
+## References
+* [Swissphone IMASYS XML]
+
+[Swissphone IMASYS XML]:http://www.swissphone.com/de/solution/imasys-ocxxml/
