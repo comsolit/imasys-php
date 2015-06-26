@@ -1,0 +1,7 @@
+<?php
+
+return [
+    'host'      => '', // IMASYS portal server host
+    'user'      => '', // IMASYS account user id
+    'password'  => ''  // IMASYS account password
+];

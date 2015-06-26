@@ -1,0 +1,17 @@
+{
+    "name": "comsolit/imasys-php",
+    "authors": [
+        {
+            "name": "comsolit AG",
+            "email": "info@comsolit.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Comsolit\\ImasysPhp\\": "src"
+        }
+    }
+}
