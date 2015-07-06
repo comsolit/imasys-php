@@ -56,7 +56,7 @@ class SendMessageResponse implements ResponseInterface
      */
     private static function transmissionSuccessful($bodyText)
     {
-        if (self::stringStartsWith($bodyText, 'OK BatchGuid=')) {
+        if (strpos($bodyText, 'OK BatchGuid=') === 0) {
             return true;
         }
 
@@ -71,11 +71,5 @@ class SendMessageResponse implements ResponseInterface
     private static function getBatchIdFromBody($bodyText)
     {
         return end(explode('=', $bodyText));
-    }
-
-    private static function stringStartsWith($haystack, $needle)
-    {
-        $length = strlen($needle);
-        return (substr($haystack, 0, $length) === $needle);
     }
 }
