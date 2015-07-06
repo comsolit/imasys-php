@@ -70,6 +70,7 @@ class SendMessageResponse implements ResponseInterface
      */
     private static function getBatchIdFromBody($bodyText)
     {
-        return end(explode('=', $bodyText));
+        $bodyArray = explode('=', $bodyText);
+        return end($bodyArray);
     }
 }
