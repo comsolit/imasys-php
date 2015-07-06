@@ -10,7 +10,7 @@ use Comsolit\ImasysPhp\ApiMethods\BatchStatusRequest;
 
 $config = require __DIR__ . '/config.php';
 
-if (count($argv) !== 3) {
+if (count($argv) !== 4) {
     die('usage: send_message.php MESSAGE ADDRESS ORIGINATOR');
 }
 
@@ -20,7 +20,7 @@ $portalServers = PortalServers::fetchPortalServers($config['host'], $credentials
 
 $connection = new Connection($credentials, $portalServers);
 
-$sendMessageRequest = new SendMessageRequest($argv[0], $argv[1], $argv[2]);
+$sendMessageRequest = new SendMessageRequest($argv[1], $argv[2], $argv[3]);
 
 $sendMessageResponse = $connection->send($sendMessageRequest);
 
