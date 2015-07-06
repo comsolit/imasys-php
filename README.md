@@ -26,6 +26,7 @@ $sendMessageResponse = $connection->send($sendMessageRequest);
 
 ### 5. Get message status
 ```PHP
+sleep(10);
 $batchStatusRequest = new BatchStatusRequest($sendMessageResponse->getBatchId());
 $batchStatusResponse = $connection->send($batchStatusRequest);
 
@@ -33,6 +34,7 @@ foreach ($batchStatusResponse->getBatch()->getMessages() as $message) {
     print_r($message->getStatus());
 }
 ```
+The reason the sleep function is called is to wait for the message to arrive on the target.
 
 ## References
 * [Swissphone IMASYS XML]

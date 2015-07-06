@@ -24,9 +24,12 @@ $sendMessageRequest = new SendMessageRequest($argv[1], $argv[2], $argv[3]);
 
 $sendMessageResponse = $connection->send($sendMessageRequest);
 
+sleep(10);
+
 $batchStatusRequest = new BatchStatusRequest($sendMessageResponse->getBatchId());
 $batchStatusResponse = $connection->send($batchStatusRequest);
 
 foreach ($batchStatusResponse->getBatch()->getMessages() as $message) {
     print_r($message->getStatus());
 }
+
