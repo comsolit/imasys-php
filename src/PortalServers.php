@@ -7,7 +7,7 @@ use Comsolit\ImasysPhp\Curl\Request;
 /**
  * Manages the Portal Servers (Message Gateways) required for making API requests.
  */
-class PortalServers implements \Iterator
+class PortalServers
 {
     /**
      * Contains the fetched portal urls
@@ -15,27 +15,6 @@ class PortalServers implements \Iterator
      * @var array
      */
     private $urls;
-    private $index = 0;
-
-    public function current() {
-        return $this->urls[$this->index];
-    }
-
-    public function next() {
-        $this->index++;
-    }
-
-    public function key() {
-        return $this->index;
-    }
-
-    public function valid() {
-        return isset($this->urls[$this->key()]);
-    }
-
-    public function rewind() {
-        $this->index = 0;
-    }
 
     /**
      * Fetches the portal urls.
