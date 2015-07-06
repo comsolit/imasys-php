@@ -7,12 +7,28 @@ use Comsolit\ImasysPhp\Credentials;
 use Comsolit\ImasysPhp\ApiMethods\SendMessageResponse as Response;
 use Comsolit\ImasysPhp\Curl\Response as CurlResponse;
 
+/**
+ * Builds a request for sending messages.
+ */
 class SendMessageRequest implements RequestInterface
 {
+    /**
+     * The message to be sent.
+     * @var string
+     */
     private $message;
 
+    /**
+     * The message recipient
+     * @var string
+     */
     private $address;
 
+    /**
+     * The sender name.
+     *
+     * @var string
+     */
     private $originator;
 
     function __construct($message, $address, $originator)
@@ -22,6 +38,10 @@ class SendMessageRequest implements RequestInterface
         $this->originator = $originator;
     }
 
+    /**
+     * (non-PHPdoc)
+     * @see \Comsolit\ImasysPhp\RequestInterface::buildUrl()
+     */
     public function buildUrl(Credentials $credentials, $host, $port)
     {
         $url = $host . '/IZ/sendmessage.aspx?';

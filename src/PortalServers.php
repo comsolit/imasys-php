@@ -4,8 +4,16 @@ namespace Comsolit\ImasysPhp;
 
 use Comsolit\ImasysPhp\Curl\Request;
 
+/**
+ * Manages the Portal Servers (Message Gateways) required for making API requests.
+ */
 class PortalServers implements \Iterator
 {
+    /**
+     * Contains the fetched portal urls
+     *
+     * @var array
+     */
     private $urls;
     private $index = 0;
 
@@ -29,7 +37,14 @@ class PortalServers implements \Iterator
         $this->index = 0;
     }
 
-    public static function fetchPortalServers($host, $credentials)
+    /**
+     * Fetches the portal urls.
+     *
+     * @param string $host
+     * @param Credentials $credentials
+     * @return PortalServers
+     */
+    public static function fetchPortalServers($host, Credentials $credentials)
     {
         $urls = [];
 
@@ -62,6 +77,9 @@ class PortalServers implements \Iterator
         }
     }
 
+    /**
+     * Returns the first portal's url
+     */
     public function getPortalServer()
     {
         return $this->urls[0];

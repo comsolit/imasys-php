@@ -7,10 +7,18 @@ use Comsolit\ImasysPhp\Credentials;
 use Comsolit\ImasysPhp\ApiMethods\BatchStatusResponse as Response;
 use Comsolit\ImasysPhp\Curl\Response as CurlResponse;
 
+/**
+ * Builds a request for fetching a batch status.
+ */
 class BatchStatusRequest implements RequestInterface
 {
     const TIMEOUT = 30000;
 
+    /**
+     * The batch ID.
+     *
+     * @var string
+     */
     private $batchId;
 
     function __construct($batchId)
@@ -18,6 +26,10 @@ class BatchStatusRequest implements RequestInterface
         $this->batchId = $batchId;
     }
 
+    /**
+     * (non-PHPdoc)
+     * @see \Comsolit\ImasysPhp\RequestInterface::buildUrl()
+     */
     public function buildUrl(Credentials $credentials, $host, $port)
     {
         $url = $host . '/IZ/imasys.msggw?';
@@ -33,10 +45,18 @@ class BatchStatusRequest implements RequestInterface
         return $url . http_build_query($data);
     }
 
+    /**
+     * (non-PHPdoc)
+     * @see \Comsolit\ImasysPhp\RequestInterface::buildBody()
+     */
     public function buildBody()
     {
     }
 
+    /**
+     * (non-PHPdoc)
+     * @see \Comsolit\ImasysPhp\RequestInterface::parseResponse()
+     */
     public function parseResponse(CurlResponse $curlResponse)
     {
         return BatchStatusResponse::parseResponse($curlResponse);
