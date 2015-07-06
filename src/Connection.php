@@ -9,8 +9,6 @@ use Comsolit\ImasysPhp\Curl\Request as CurlRequest;
  */
 class Connection
 {
-    private $host;
-
     /**
      * Credentials required for accessing the IMASYS Messaging Platform
      *
