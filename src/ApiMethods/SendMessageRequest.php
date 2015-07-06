@@ -34,9 +34,7 @@ class SendMessageRequest implements RequestInterface
             'Originator' => $this->originator
         ];
 
-        $url = $url . http_build_query($data, '', '&', PHP_QUERY_RFC3986);
-
-        return $url;
+        return $url . http_build_query($data, '', '&', PHP_QUERY_RFC3986);
     }
 
     public function buildBody()
