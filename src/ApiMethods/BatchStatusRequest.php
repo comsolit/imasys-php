@@ -61,4 +61,13 @@ class BatchStatusRequest implements RequestInterface
     {
         return BatchStatusResponse::parseResponse($curlResponse);
     }
+
+    /*
+     * (non-PHPdoc)
+     * @see \Comsolit\ImasysPhp\RequestInterface::getDebugData()
+     */
+    public function getDebugData()
+    {
+        return get_object_vars($this);
+    }
 }

@@ -73,4 +73,13 @@ class SendMessageResponse implements ResponseInterface
         $bodyArray = explode('=', $bodyText);
         return end($bodyArray);
     }
+
+    /*
+     * (non-PHPdoc)
+     * @see \Comsolit\ImasysPhp\ResponseInterface::getDebugData()
+     */
+    public function getDebugData()
+    {
+        return get_object_vars($this);
+    }
 }

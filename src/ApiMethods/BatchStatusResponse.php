@@ -63,4 +63,13 @@ class BatchStatusResponse implements ResponseInterface
 
         return $batchStatusResponse;
     }
+
+    /*
+     * (non-PHPdoc)
+     * @see \Comsolit\ImasysPhp\ResponseInterface::getDebugData()
+     */
+    public function getDebugData()
+    {
+        return get_object_vars($this);
+    }
 }
