@@ -64,4 +64,9 @@ class Batch
     {
         return $this->messages;
     }
+
+    public function __toString()
+    {
+        return '(' . $this->getBatchId() . ') ' . $this->getStatus();
+    }
 }
