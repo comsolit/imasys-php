@@ -15,4 +15,9 @@ interface ResponseInterface
      * @param CurlResponse $response
      */
     public static function parseResponse(CurlResponse $response);
+
+    /**
+     * Returns an associative array representation of the response
+     */
+    public function getDebugData();
 }

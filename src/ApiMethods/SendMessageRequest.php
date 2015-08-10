@@ -65,4 +65,13 @@ class SendMessageRequest implements RequestInterface
     {
         return SendMessageResponse::parseResponse($curlResponse);
     }
+
+    /*
+     * (non-PHPdoc)
+     * @see \Comsolit\ImasysPhp\RequestInterface::getDebugData()
+     */
+    public function getDebugData()
+    {
+        return get_object_vars($this);
+    }
 }
