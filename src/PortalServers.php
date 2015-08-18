@@ -39,21 +39,21 @@ class PortalServers
         $request = new Request($url);
         $request->run();
 
-        if ($request->wasSuccessful()) {
-            $portalServers = new PortalServers();
-            $xml = simplexml_load_string($request->response->getState()['body']);
-
-            foreach ($xml->ISPortals->children() as $portal)
-            {
-                array_push($urls, (string)$portal->Url);
-            }
-
-            $portalServers->urls = $urls;
-            return $portalServers;
+        if(!$request->wasSuccessful()){
+            throw new \Exception($request->response->getState()['httpCode'] . ' on fetching Portal Servers with url: ' . $url);
         }
-        else {
-            return null;
+
+        $portalServers = new PortalServers();
+        $xml = simplexml_load_string($request->response->getState()['body']);
+
+        foreach ($xml->ISPortals->children() as $portal)
+        {
+            array_push($urls, (string)$portal->Url);
         }
+
+        $portalServers->urls = $urls;
+
+        return $portalServers;
     }
 
     /**

@@ -216,7 +216,7 @@ class Request
     {
         $ch = is_resource( $ch ) ? $ch : $this->curlHandle;
         if( CURLE_OK === ( $errNo = curl_errno( $ch ) ) ) return;
-        throw new \Exception( $errNo, curl_error( $ch ), $this->url );
+        throw new \Exception( $errNo . " " . curl_error( $ch ) . " " . $this->url );
     }
 
     public function __get( $name )
