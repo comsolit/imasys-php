@@ -7,7 +7,7 @@ use Comsolit\ImasysPhp\Curl\Response as CurlResponse;
 /**
  * Declares methods for building IMASYS requests and parsing the response
  */
-interface RequestInterface
+interface RequestInterface extends DebuggableInterface
 {
     /**
      * Builds the request url.
@@ -28,9 +28,4 @@ interface RequestInterface
      * @param CurlResponse $response
      */
     public function parseResponse(CurlResponse $response);
-
-    /**
-     * Returns an associative array representation of the request
-     */
-    public function getDebugData();
 }

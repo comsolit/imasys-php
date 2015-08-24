@@ -2,14 +2,14 @@
 
 namespace Comsolit\ImasysPhp\ApiMethods;
 
-use Comsolit\ImasysPhp\RequestInterface;
 use Comsolit\ImasysPhp\Credentials;
 use Comsolit\ImasysPhp\Curl\Response as CurlResponse;
+use Comsolit\ImasysPhp\AbstractRequest;
 
 /**
  * Builds a request for fetching a batch status.
  */
-class BatchStatusRequest implements RequestInterface
+class BatchStatusRequest extends AbstractRequest
 {
     const TIMEOUT = 30000;
 
@@ -46,27 +46,10 @@ class BatchStatusRequest implements RequestInterface
 
     /**
      * (non-PHPdoc)
-     * @see \Comsolit\ImasysPhp\RequestInterface::buildBody()
-     */
-    public function buildBody()
-    {
-    }
-
-    /**
-     * (non-PHPdoc)
      * @see \Comsolit\ImasysPhp\RequestInterface::parseResponse()
      */
     public function parseResponse(CurlResponse $curlResponse)
     {
         return BatchStatusResponse::parseResponse($curlResponse);
-    }
-
-    /*
-     * (non-PHPdoc)
-     * @see \Comsolit\ImasysPhp\RequestInterface::getDebugData()
-     */
-    public function getDebugData()
-    {
-        return get_object_vars($this);
     }
 }

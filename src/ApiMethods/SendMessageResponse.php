@@ -2,13 +2,13 @@
 
 namespace Comsolit\ImasysPhp\ApiMethods;
 
-use Comsolit\ImasysPhp\ResponseInterface;
 use Comsolit\ImasysPhp\Curl\Response as CurlResponse;
+use Comsolit\ImasysPhp\AbstractResponse;
 
 /**
  * Encapsulates IMASYS response information from a SendMessageRequest.
  */
-class SendMessageResponse implements ResponseInterface
+class SendMessageResponse extends AbstractResponse
 {
     /**
      * The batch ID of the batch containing the sent message.
@@ -70,14 +70,5 @@ class SendMessageResponse implements ResponseInterface
         $bodyArray = explode('=', $bodyText);
 
         return end($bodyArray);
-    }
-
-    /*
-     * (non-PHPdoc)
-     * @see \Comsolit\ImasysPhp\ResponseInterface::getDebugData()
-     */
-    public function getDebugData()
-    {
-        return get_object_vars($this);
     }
 }

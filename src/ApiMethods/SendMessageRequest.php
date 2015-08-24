@@ -2,14 +2,14 @@
 
 namespace Comsolit\ImasysPhp\ApiMethods;
 
-use Comsolit\ImasysPhp\RequestInterface;
 use Comsolit\ImasysPhp\Credentials;
 use Comsolit\ImasysPhp\Curl\Response as CurlResponse;
+use Comsolit\ImasysPhp\AbstractRequest;
 
 /**
  * Builds a request for sending messages.
  */
-class SendMessageRequest implements RequestInterface
+class SendMessageRequest extends AbstractRequest
 {
     /**
      * The message to be sent.
@@ -56,21 +56,8 @@ class SendMessageRequest implements RequestInterface
         return $url . http_build_query($data, '', '&', PHP_QUERY_RFC3986);
     }
 
-    public function buildBody()
-    {
-    }
-
     public function parseResponse(CurlResponse $curlResponse)
     {
         return SendMessageResponse::parseResponse($curlResponse);
-    }
-
-    /*
-     * (non-PHPdoc)
-     * @see \Comsolit\ImasysPhp\RequestInterface::getDebugData()
-     */
-    public function getDebugData()
-    {
-        return get_object_vars($this);
     }
 }

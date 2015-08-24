@@ -2,14 +2,14 @@
 
 namespace Comsolit\ImasysPhp\ApiMethods;
 
-use Comsolit\ImasysPhp\ResponseInterface;
 use Comsolit\ImasysPhp\Message;
 use Comsolit\ImasysPhp\Curl\Response as CurlResponse;
+use Comsolit\ImasysPhp\AbstractResponse;
 
 /**
  * Encapsulates IMASYS response information from a BatchStatusRequest.
  */
-class BatchStatusResponse implements ResponseInterface
+class BatchStatusResponse extends AbstractResponse
 {
     /**
      * The batch ID.
@@ -99,14 +99,5 @@ class BatchStatusResponse implements ResponseInterface
         }
 
         return new self($batchId, $status, $messages);
-    }
-
-    /*
-     * (non-PHPdoc)
-     * @see \Comsolit\ImasysPhp\ResponseInterface::getDebugData()
-     */
-    public function getDebugData()
-    {
-        return get_object_vars($this);
     }
 }

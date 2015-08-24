@@ -2,10 +2,10 @@
 
 namespace Comsolit\ImasysPhp\ApiMethods;
 
-use Comsolit\ImasysPhp\ResponseInterface;
 use Comsolit\ImasysPhp\Curl\Response as CurlResponse;
+use Comsolit\ImasysPhp\AbstractResponse;
 
-class DeliveryDisabledResponse implements ResponseInterface
+class DeliveryDisabledResponse extends AbstractResponse
 {
     /*
      * (non-PHPdoc)
@@ -14,14 +14,5 @@ class DeliveryDisabledResponse implements ResponseInterface
     public static function parseResponse(CurlResponse $response)
     {
         return new DeliveryDisabledResponse();
-    }
-
-    /*
-     * (non-PHPdoc)
-     * @see \Comsolit\ImasysPhp\ResponseInterface::getDebugData()
-     */
-    public function getDebugData()
-    {
-        return ['batchId' => 'unavailable'];
     }
 }
