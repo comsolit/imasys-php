@@ -16,6 +16,16 @@ class PortalServers
      */
     private $urls;
 
+    private $host;
+
+    private $credentials;
+
+    public function __construct($host, Credentials $credentials)
+    {
+        $this->host = $host;
+        $this->credentials = $credentials;
+    }
+
     /**
      * Fetches the portal urls.
      *
@@ -23,15 +33,15 @@ class PortalServers
      * @param Credentials $credentials
      * @return PortalServers
      */
-    public static function fetchPortalServers($host, Credentials $credentials)
+    private function fetchPortalServers()
     {
         $urls = [];
 
-        $url = $host . '/IZ/GetPortalList.aspx?';
+        $url = $this->host . '/IZ/GetPortalList.aspx?';
 
         $data = [
-            'UserID' => $credentials->getUserName(),
-            'Pwd' => $credentials->getPassword()
+            'UserID' => $this->credentials->getUserName(),
+            'Pwd' => $this->credentials->getPassword()
         ];
 
         $url = $url . http_build_query($data);
@@ -43,7 +53,6 @@ class PortalServers
             throw new \Exception($request->response->getState()['httpCode'] . ' on fetching Portal Servers with url: ' . $url);
         }
 
-        $portalServers = new PortalServers();
         $xml = simplexml_load_string($request->response->getState()['body']);
 
         foreach ($xml->ISPortals->children() as $portal)
@@ -51,9 +60,7 @@ class PortalServers
             array_push($urls, (string)$portal->Url);
         }
 
-        $portalServers->urls = $urls;
-
-        return $portalServers;
+        return $urls;
     }
 
     /**
@@ -61,6 +68,11 @@ class PortalServers
      */
     public function getPortalServer()
     {
+        if (is_null($this->urls)) {
+            $this->urls = $this->fetchPortalServers();
+        }
+
+        // TODO use random?
         return $this->urls[0];
     }
 }
