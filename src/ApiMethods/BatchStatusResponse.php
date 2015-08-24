@@ -3,7 +3,6 @@
 namespace Comsolit\ImasysPhp\ApiMethods;
 
 use Comsolit\ImasysPhp\ResponseInterface;
-use Comsolit\ImasysPhp\Batch;
 use Comsolit\ImasysPhp\Message;
 use Comsolit\ImasysPhp\Curl\Response as CurlResponse;
 
@@ -13,20 +12,61 @@ use Comsolit\ImasysPhp\Curl\Response as CurlResponse;
 class BatchStatusResponse implements ResponseInterface
 {
     /**
-     * The Batch object.
+     * The batch ID.
      *
-     * @var Batch
+     * @var string
      */
-    private $batch;
+    private $batchId;
 
     /**
-     * Returns the Batch object.
+     * The batch status.
      *
-     * @return \Comsolit\ImasysPhp\Batch
+     * @var string
      */
-    public function getBatch()
+    private $status;
+
+    /**
+     * An array of messages contained in batch.
+     *
+     * @var array
+     */
+    private $messages;
+
+    public function __construct($batchId, $status, array $messages)
     {
-        return $this->batch;
+        $this->batchId  = $batchId;
+        $this->status   = $status;
+        $this->messages = $messages;
+    }
+
+    /**
+     * Returns the batch ID.
+     *
+     * @return string
+     */
+    public function getBatchId()
+    {
+        return $this->batchId;
+    }
+
+    /**
+     * Returns the batch status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Returns an array of messages contained in batch.
+     *
+     * @return array
+     */
+    public function getMessages()
+    {
+        return $this->messages;
     }
 
     /**
@@ -53,15 +93,12 @@ class BatchStatusResponse implements ResponseInterface
                     (string)$message->NotificationMsg,
                     (int)$message->DeliveryTimeStamp,
                     (int)$message->ErrorCode,
-                    (string)$message->ErrorrDescription
+                    (string)$message->ErrorDescription
                 )
             );
         }
 
-        $batchStatusResponse = new BatchStatusResponse();
-        $batchStatusResponse->batch = new Batch($batchId, $status, $messages);
-
-        return $batchStatusResponse;
+        return new self($batchId, $status, $messages);
     }
 
     /*

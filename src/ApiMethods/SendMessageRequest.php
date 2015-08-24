@@ -4,7 +4,6 @@ namespace Comsolit\ImasysPhp\ApiMethods;
 
 use Comsolit\ImasysPhp\RequestInterface;
 use Comsolit\ImasysPhp\Credentials;
-use Comsolit\ImasysPhp\ApiMethods\SendMessageResponse as Response;
 use Comsolit\ImasysPhp\Curl\Response as CurlResponse;
 
 /**
@@ -31,7 +30,7 @@ class SendMessageRequest implements RequestInterface
      */
     private $originator;
 
-    function __construct($message, $address, $originator)
+    public function __construct($message, $address, $originator)
     {
         $this->message = $message;
         $this->address = $address;

@@ -23,7 +23,7 @@ class Connection
      */
     private $portalServers;
 
-    function __construct(Credentials $credentials, PortalServers $portalServers)
+    public function __construct(Credentials $credentials, PortalServers $portalServers)
     {
         $this->credentials = $credentials;
         $this->portalServers = $portalServers;

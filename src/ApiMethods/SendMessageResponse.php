@@ -16,6 +16,11 @@ class SendMessageResponse implements ResponseInterface
      */
     private $batchId;
 
+    public function __construct($batchId)
+    {
+        $this->batchId = $batchId;
+    }
+
     /**
      * Returns the batch ID of the batch containing the sent message.
      *
@@ -37,15 +42,11 @@ class SendMessageResponse implements ResponseInterface
     {
         $body = $response->getState()['body'];
 
-        $sendMessageResponse = new SendMessageResponse();
-
         if (!self::transmissionSuccessful($body)) {
             throw new \Exception($body);
         }
 
-        $sendMessageResponse->batchId = self::getBatchIdFromBody($body);
-
-        return $sendMessageResponse;
+        return new self(self::getBatchIdFromBody($body));
     }
 
     /**
@@ -56,11 +57,7 @@ class SendMessageResponse implements ResponseInterface
      */
     private static function transmissionSuccessful($bodyText)
     {
-        if (strpos($bodyText, 'OK BatchGuid=') === 0) {
-            return true;
-        }
-
-        return false;
+        return strpos($bodyText, 'OK BatchGuid=') === 0;
     }
 
     /**
@@ -71,6 +68,7 @@ class SendMessageResponse implements ResponseInterface
     private static function getBatchIdFromBody($bodyText)
     {
         $bodyArray = explode('=', $bodyText);
+
         return end($bodyArray);
     }
 

@@ -4,7 +4,6 @@ namespace Comsolit\ImasysPhp\ApiMethods;
 
 use Comsolit\ImasysPhp\RequestInterface;
 use Comsolit\ImasysPhp\Credentials;
-use Comsolit\ImasysPhp\ApiMethods\BatchStatusResponse as Response;
 use Comsolit\ImasysPhp\Curl\Response as CurlResponse;
 
 /**
@@ -21,7 +20,7 @@ class BatchStatusRequest implements RequestInterface
      */
     private $batchId;
 
-    function __construct($batchId)
+    public function __construct($batchId)
     {
         $this->batchId = $batchId;
     }

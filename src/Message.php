@@ -49,7 +49,7 @@ class Message
      */
     private $errorDescription;
 
-    function __construct($messageId, $status, $notificationMessage, $deliveryTimeStamp, $errorCode, $errorDescription)
+    public function __construct($messageId, $status, $notificationMessage, $deliveryTimeStamp, $errorCode, $errorDescription)
     {
         $this->messageId           = $messageId;
         $this->status              = $status;
