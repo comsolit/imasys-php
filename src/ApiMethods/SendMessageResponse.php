@@ -8,13 +8,13 @@ use Comsolit\ImasysPhp\AbstractResponse;
 /**
  * Encapsulates IMASYS response information from a SendMessageRequest.
  */
-class SendMessageResponse extends AbstractResponse
+final class SendMessageResponse extends AbstractResponse
 {
     /**
      * The batch ID of the batch containing the sent message.
      * @var string
      */
-    private $batchId;
+    protected $batchId;
 
     public function __construct($batchId)
     {

@@ -9,28 +9,28 @@ use Comsolit\ImasysPhp\AbstractResponse;
 /**
  * Encapsulates IMASYS response information from a BatchStatusRequest.
  */
-class BatchStatusResponse extends AbstractResponse
+final class BatchStatusResponse extends AbstractResponse
 {
     /**
      * The batch ID.
      *
      * @var string
      */
-    private $batchId;
+    protected $batchId;
 
     /**
      * The batch status.
      *
      * @var string
      */
-    private $status;
+    protected $status;
 
     /**
      * An array of messages contained in batch.
      *
      * @var array
      */
-    private $messages;
+    protected $messages;
 
     public function __construct($batchId, $status, array $messages)
     {

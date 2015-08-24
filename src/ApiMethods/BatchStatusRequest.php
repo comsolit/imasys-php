@@ -9,7 +9,7 @@ use Comsolit\ImasysPhp\AbstractRequest;
 /**
  * Builds a request for fetching a batch status.
  */
-class BatchStatusRequest extends AbstractRequest
+final class BatchStatusRequest extends AbstractRequest
 {
     const TIMEOUT = 30000;
 
@@ -18,7 +18,7 @@ class BatchStatusRequest extends AbstractRequest
      *
      * @var string
      */
-    private $batchId;
+    protected $batchId;
 
     public function __construct($batchId)
     {

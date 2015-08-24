@@ -9,26 +9,26 @@ use Comsolit\ImasysPhp\AbstractRequest;
 /**
  * Builds a request for sending messages.
  */
-class SendMessageRequest extends AbstractRequest
+final class SendMessageRequest extends AbstractRequest
 {
     /**
      * The message to be sent.
      * @var string
      */
-    private $message;
+    protected $message;
 
     /**
      * The message recipient
      * @var string
      */
-    private $address;
+    protected $address;
 
     /**
      * The sender name.
      *
      * @var string
      */
-    private $originator;
+    protected $originator;
 
     public function __construct($message, $address, $originator)
     {

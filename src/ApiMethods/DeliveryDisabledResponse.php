@@ -5,7 +5,7 @@ namespace Comsolit\ImasysPhp\ApiMethods;
 use Comsolit\ImasysPhp\Curl\Response as CurlResponse;
 use Comsolit\ImasysPhp\AbstractResponse;
 
-class DeliveryDisabledResponse extends AbstractResponse
+final class DeliveryDisabledResponse extends AbstractResponse
 {
     /*
      * (non-PHPdoc)
@@ -13,6 +13,6 @@ class DeliveryDisabledResponse extends AbstractResponse
      */
     public static function parseResponse(CurlResponse $response)
     {
-        return new DeliveryDisabledResponse();
+        return new self;
     }
 }
