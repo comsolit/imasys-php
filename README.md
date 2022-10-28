@@ -1,3 +1,5 @@
+# **THIS REPO IS UNMAINTAINED / A NEW MAINTAINER IS NEEDED**
+
 # IMASYS PHP
 
 IMASYS PHP is a PHP wrapper for the IMASYS XML API from Swissphone. Current capabilities are sending SMS messages and checking the message status.
